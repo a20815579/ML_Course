@@ -316,7 +316,7 @@ def ml_loop(side: str):
             former_blocker = now_blocker
         # 3.4 Send the instruction for this frame to the game process
         if not ball_served:            
-            if scene_info['frame'] == 150:
+            if scene_info['frame'] == 149:
                 comm.send_to_game({"frame": scene_info["frame"], "command": "SERVE_TO_RIGHT"})
                 ball_served = True
         else:
