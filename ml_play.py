@@ -96,9 +96,9 @@ def ml_loop(side: str):
 
         # 3.4 Send the instruction for this frame to the game process
         if not ball_served:
-            #comm.send_to_game({"frame": scene_info["frame"], "command": "SERVE_TO_LEFT"})
-            if scene_info['frame'] == 151:
-                ball_served = True
+            comm.send_to_game({"frame": scene_info["frame"], "command": "SERVE_TO_LEFT"})
+            #if scene_info['frame'] == 151:
+            ball_served = True
         else:
             if side == "1P":
                 command = ml_loop_for_1P()
