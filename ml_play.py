@@ -228,12 +228,12 @@ def ml_loop(side: str):
 
     def move_to(player, pred) : #move platform to predicted position to catch ball 
         if player == '1P':
-            if scene_info["platform_1P"][0]+20  > (pred-3) and scene_info["platform_1P"][0]+20 < (pred+3): return 0 # NONE
-            elif scene_info["platform_1P"][0]+20 <= (pred-3) : return 1 # goes right
+            if scene_info["platform_1P"][0]+17.5  > (pred-3) and scene_info["platform_1P"][0]+17.5 < (pred+3): return 0 # NONE
+            elif scene_info["platform_1P"][0]+17.5 <= (pred-3) : return 1 # goes right
             else : return 2 # goes left
         else :
-            if scene_info["platform_2P"][0]+20  > (pred-3) and scene_info["platform_2P"][0]+20 < (pred+3): return 0 # NONE
-            elif scene_info["platform_2P"][0]+20 <= (pred-3) : return 1 # goes right
+            if scene_info["platform_2P"][0]+17.5  > (pred-3) and scene_info["platform_2P"][0]+17.5 < (pred+3): return 0 # NONE
+            elif scene_info["platform_2P"][0]+17.5 <= (pred-3) : return 1 # goes right
             else : return 2 # goes left
 
     def pred_1P(): 
@@ -324,20 +324,20 @@ def ml_loop(side: str):
                 pred_temp = pred_1P()
                 command = move_to("1P", pred_temp)
                 if now_ball_speed_y > 0 and 415-now_ball_y <= now_ball_speed_y*2 and 415-now_ball_y > now_ball_speed_y:
-                    if abs(pred_temp - (scene_info['platform_1P'][0]+20)) < 18:
+                    if abs(pred_temp - (scene_info['platform_1P'][0]+17.5)) < 18:
                         command = second_last_command
                     if will_print2:
-                        if abs(pred_temp - (scene_info['platform_1P'][0]+20)) < 18:
+                        if abs(pred_temp - (scene_info['platform_1P'][0]+17.5)) < 18:
                             print(scene_info['frame'],"do_second", second_last_command, case, side)
                         else:
                             print(scene_info['frame'],"not_second", second_last_command, case, command, side)
                         will_print2 = False
                 elif now_ball_speed_y > 0 and 415-now_ball_y <= now_ball_speed_y and 415-now_ball_y != 0:
-                    if abs(pred_temp - (scene_info['platform_1P'][0]+20)) < 18:
+                    if abs(pred_temp - (scene_info['platform_1P'][0]+17.5)) < 18:
                         command = last_command
                         ready_print = True
                     if will_print1:
-                        if abs(pred_temp - (scene_info['platform_1P'][0]+20)) < 18:
+                        if abs(pred_temp - (scene_info['platform_1P'][0]+17.5)) < 18:
                             print(scene_info['frame'],"do_last", last_command, case, side)
                         else:
                             print(scene_info['frame'],"not_last", last_command, case, command, side)
@@ -346,20 +346,20 @@ def ml_loop(side: str):
                 pred_temp = pred_2P()
                 command = move_to("2P", pred_temp)
                 if now_ball_speed_y < 0 and now_ball_y-80 <= -now_ball_speed_y*2 and now_ball_y-80 > -now_ball_speed_y:
-                    if abs(pred_temp - (scene_info['platform_2P'][0]+20)) < 18:
+                    if abs(pred_temp - (scene_info['platform_2P'][0]+17.5)) < 18:
                         command = second_last_command
                     if will_print2:
-                        if abs(pred_temp - (scene_info['platform_2P'][0]+20)) < 18:
+                        if abs(pred_temp - (scene_info['platform_2P'][0]+17.5)) < 18:
                             print(scene_info['frame'],"do_second", second_last_command, case, side)
                         else:
                             print(scene_info['frame'],"not_second", second_last_command, case, command, side)
                         will_print2 = False
                 elif now_ball_speed_y < 0 and now_ball_y-80 <= -now_ball_speed_y and now_ball_y-80 != 0:
-                    if abs(pred_temp - (scene_info['platform_2P'][0]+20)) < 18:
+                    if abs(pred_temp - (scene_info['platform_2P'][0]+17.5)) < 18:
                         command = last_command
                         ready_print = True
                     if will_print1:
-                        if abs(pred_temp - (scene_info['platform_2P'][0]+20)) < 18:
+                        if abs(pred_temp - (scene_info['platform_2P'][0]+17.5)) < 18:
                             print(scene_info['frame'],"do_last", last_command, case, side)
                         else:
                             print(scene_info['frame'],"not_last", last_command, case, command, side)
