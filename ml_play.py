@@ -241,7 +241,8 @@ def ml_loop(side: str):
             x = (scene_info["platform_1P"][1]-scene_info["ball"][1]-5) // scene_info["ball_speed"][1]
             if (scene_info["platform_1P"][1]-scene_info["ball"][1]-5) % scene_info["ball_speed"][1] != 0:
                 x = x + 1
-            pred = scene_info["ball"][0]+(scene_info["ball_speed"][0]*x)
+            x2 = (scene_info["platform_1P"][1]-scene_info["ball"][1]-5) / scene_info["ball_speed"][1]
+            pred = scene_info["ball"][0]+(scene_info["ball_speed"][0]*x2)
             if scene_info["ball"][1] > 275:
                 pred, is_bounce = revise_ball_pred(pred, scene_info["ball"][0], abs(scene_info["ball_speed"][0]))                
             else:
@@ -257,7 +258,8 @@ def ml_loop(side: str):
             x = (scene_info["platform_2P"][1]+30-scene_info["ball"][1]) // scene_info["ball_speed"][1] 
             if (scene_info["platform_2P"][1]+30-scene_info["ball"][1]) % scene_info["ball_speed"][1] != 0:
                 x += 1
-            pred = scene_info["ball"][0]+(scene_info["ball_speed"][0]*x) 
+            x2 = (scene_info["platform_2P"][1]+30-scene_info["ball"][1]) / scene_info["ball_speed"][1]
+            pred = scene_info["ball"][0]+(scene_info["ball_speed"][0]*x2) 
             if scene_info["ball"][1] < 220:
                 pred, is_bounce = revise_ball_pred(pred, scene_info["ball"][0], abs(scene_info["ball_speed"][0]))
             else:                
